@@ -1,0 +1,21 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore vendor and dependencies
+vendor/
+node_modules/
+
+# Ignore Composer and environment files
+composer.lock
+.env
+
+# Ignore log and cache files
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Ignore IDE/editor files
+.idea/
+.vscode/
