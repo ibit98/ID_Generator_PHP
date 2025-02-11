@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" media="screen and (max-width: 1199px)" href="./assets/css/md_device.css">
+        <link rel="stylesheet" media="screen and (max-width: 991px)" href="./assets/css/sm_device.css">
+        <link rel="stylesheet" media="screen and (max-width: 768px)" href="./assets/css/xs_device.css">
+        <link rel="stylesheet" media="screen and (max-width: 450px)" href="./assets/css/narrow_device.css">
+		<link rel="icon" type="image/png" href="./assets/images/favicon.png">
+		<link rel="icon" type="image/png" href="./assets/favicon/favicon-32x32.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+		<link rel="android-chrome" sizes="192x192" href="./assets/favicon/android-chrome-192x192.png">
+		<link rel="android-chrome" sizes="512x152" href="./assets/favicon/android-chrome-512x512.png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+            integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+            crossorigin="anonymous"
+        ></script>
+		<script>
+			
+			document.addEventListener("keydown", function (event){
+    if (event.ctrlKey){
+       event.preventDefault();
+    }
+    if(event.keyCode == 123){
+       event.preventDefault();
+    }
+});
+			
+			</script>
+		<script
+            src="cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+        <title>Get Your ID Card</title>
+        <!-- Start of Async Drift Code -->
+	<!-- End of Async Drift Code -->
+		<style>
+    #cropped_result{
+        height:272 !important;
+        width:226 !important;
+        display:none;
+		
+    }
+			@font-face {
+      font-family: 'roboto-medium';
+      src: url('fonts/roboto-medium.ttf');
+    }
+		</style>
+    </head>
+    <body style="background-color: #591b03;">
+		
+        <section class="dept" style=" background-size: cover; background-size: 100% 100%;">
+            <a href="#" target="_blank"><img class="i" src="./assets/images/Sunrise-Logo.png" alt="Sunrise-Logo"></a>
+            <h3 class="pt-4" style="color: white;"> Student ID Card </h3>
+            <h1 align="center"><a href="#" target="_blank" id="chemdept"><span style="color:gold;font-weight: 800;">SUNRISE INETERNATIONAL PRESCHOOL</span></a></h1>
+            <form id="formput" action="generate_pdf.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">name</label>
+                        <input type="text" maxlength="30" class="form-control mx-auto mb-2" id="name" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Your Name Here" required>
+                    </div> 
+					
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">std</label>
+                        <input type="text" maxlength="23" class="form-control mx-auto mb-2" id="std" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Class" required>
+                    </div>   
+					
+					
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">mob-1</label>
+                        <input type="text" maxlength="23" class="form-control mx-auto mb-2" id="mob-1" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Mob.No-1 12345 67890" required>
+                    </div>
+					
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">mob-2</label>
+                        <input type="text" maxlength="23" class="form-control mx-auto mb-2" id="mob-2" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Mob.No-2 98257 77783" required>
+                    </div>
+					
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">add-1</label>
+                        <input type="text" maxlength="30" class="form-control mx-auto mb-2" id="add-1" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Add. No & Flat Name" required>
+                    </div>
+					
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">add-2</label>
+                        <input type="text" maxlength="30" class="form-control mx-auto mb-2" id="add-2" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Add. Landmark" required>
+                    </div>
+					<div class="col-auto my-4">
+                        <label class="sr-only" for="inlineFormInput">add-3</label>
+                        <input type="text" maxlength="30" class="form-control mx-auto mb-2" id="add-3" style="background-color: rgb(2, 2, 133); color: white;" placeholder="Add. Area & Dist." required>
+                    </div>
+					
+					<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Upload Your Image
+</button>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Choose Your Image </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-auto my-4 mx-auto" id="userImage">
+			 
+                        <section id="inputImage" style="color: beige;">Choose Your<span style="color: yellow;"> Image</span></section>
+                        <label class="sr-only" for="inlineFormInput">photo</label>
+			
+                        <input type="file" accept=image/*  style="background-color:  rgb(42, 88, 73);" value="Upload Your Photo" class="form-control mb-2" id="profile" accept=".jpg,.png,.jpeg" onchange="readURL(this);" required>
+			<div class="image_container">
+    <img id="blah" src="assets/images/Sunrise-Logo.png" alt="your image" style="height:250px;width:250px" />
+</div>
+
+<!-- // Cropped image to display (only if u want) -->
+<img id="cropped_result" height="272" width="226" style="display:none"> 
+                    
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="preview" class="btn btn-secondary" data-dismiss="modal">View</button>
+         <button type="button" class="btn btn-dark" id="submit" style="margin: 3px">Submit</button> 
+		   <button type="button" class="btn btn-primary" id="crop_button" style="margin: 3px">Crop</button> 
+		  
+		  
+      </div>
+    </div>
+  </div>
+</div>
+                </div> 
+            
+        </section>       
+        
+        <canvas id="canvas"></canvas>
+        <img id="img" style="display: none;"  onload="draw()" src="./assets/images/Sunrise-School.jpg"/>
+        <img id="img1" style="display: none;" src = ""/>
+        <div id="container">
+            <button type="button" class="btn btn-outline-primary mb-2" style="box-shadow: none;" id="djpg" onclick="downloadjpg()">DOWNLOAD JPEG</button>
+            <button type="submit" class="btn btn-outline-primary mb-2" style="box-shadow: none;">DOWNLOAD PDF</button>
+			<a class="btn btn-primary" href="https://idcard99.in/Sunrise/index" role="button"> Back or Edit </a>
+			<a class="btn btn-primary" href="https://g.page/r/CQhVeTM-sMgdEB0/review" role="button"> Write Your Review On Google </a>
+			
+        </div>
+    </form>
+        <footer>
+            <div class="center">
+                Copyright &copy;2024&nbsp;&nbsp;&nbsp;<a href="https://g.page/r/CQhVeTM-sMgdEB0/review"target="_blank">Dhruv Lamination</a><br>
+                All Rights Reserved
+            </div>
+			
+        </footer>
+        <script>
+			function readURL(input) {
+			//	alert("1");
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#blah').attr('src', e.target.result)
+    };
+    reader.readAsDataURL(input.files[0]);
+    setTimeout(initCropper, 1000);
+  }
+}
+function initCropper(){
+  console.log("Came here")
+  var image = document.getElementById('blah');
+  var cropper = new Cropper(image, {
+    aspectRatio: 1/1.20,
+    crop: function(e) {
+      console.log(e.detail.x);
+      console.log(e.detail.y);
+    }
+  });
+
+  // On crop button clicked
+  document.getElementById('crop_button').addEventListener('click', function(){
+    var imgurl =  cropper.getCroppedCanvas().toDataURL();
+    var img = document.createElement("img");
+    img.src = imgurl;
+        $('#cropped_result').attr('src',imgurl);
+        $('#cropped_result').css('display','block');
+    //document.getElementById("img1").appendChild(img);
+     $('#img1').attr('src',imgurl);
+
+	  //draw();
+    
+  });
+}
+			
+            // function draw(){
+            // var canvas = document.getElementById('canvas'),
+            // ctx = canvas.getContext('2d');
+            // canvas.width = $('#img').width();
+            // canvas.crossOrigin = "Anonymous";
+            // canvas.height = $('#img').height();
+            // ctx.drawImage($('#img').get(0), 0, 0);
+            // };
+            canvas.width = $('#img').width();
+            canvas.height = $('#img').height();
+            var x = $('#img1').width();
+            var y = $('#img1').height();
+            var ratio = x/y
+            var today = new Date();
+            // var dd = String(today.getDate()).padStart(2, '0');
+            // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var yyyy = today.getFullYear();
+            // today = dd + '/' + mm + '/' + yyyy
+            // function previewFile() {
+            // const preview = document.getElementById('img1');
+            // const file = document.querySelector('input[type=file]').files[0];
+            // const reader = new FileReader();
+            // reader.addEventListener("load", function () {
+            //     // convert image file to base64 string
+            //     preview.src = reader.result;
+            //     }, false);
+            //     if (file) {
+            //     reader.readAsDataURL(file);
+            //     }
+            // }
+            $('#name').bind('input propertychange', function() {
+                if (this.value.length > 30) {
+                    $("#name").val($("#name").val().substring(0,30));
+                    alert("stop");
+                }
+            });
+			
+			$('#std').bind('input propertychange', function() {
+                if (this.value.length > 11) {
+                    $("#std").val($("#std").val().substring(0,20));
+                    alert("stop");
+                }
+            });
+			
+			$('#mob-1').bind('input propertychange', function() {
+                if (this.value.length > 11) {
+                    $("#mob-1").val($("#mob-1").val().substring(0,20));
+                    alert("stop");
+                }
+            });
+			
+			$('#mob-2').bind('input propertychange', function() {
+                if (this.value.length > 11) {
+                    $("#mob-2").val($("#mob-2").val().substring(0,20));
+                    alert("stop");
+                }
+            });
+			$('#add-1').bind('input propertychange', function() {
+                if (this.value.length > 30) {
+                    $("#add-1").val($("#add-1").val().substring(0,30));
+                    alert("stop");
+                }
+            });
+			
+			$('#add-2').bind('input propertychange', function() {
+                if (this.value.length > 30) {
+                    $("#add-2").val($("#add-2").val().substring(0,30));
+                    alert("stop");
+                }
+            });
+			
+			$('#add-2').bind('input propertychange', function() {
+                if (this.value.length > 30) {
+                    $("#add-3").val($("#add-3").val().substring(0,30));
+                    alert("stop");
+                }
+            });
+			
+            $(document).on('click','#submit',function(){
+                var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d');
+                $('#preview').css('display','inline-block');
+				$('#canvas').css('font-family', "roboto-medium");
+                //redraw image
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage($('#img').get(0), 0, 0);
+                ctx.drawImage($('#img1').get(0), 63, 299, 226, 272);
+                //refill text
+                ctx.fillStyle = "#0314b6";
+                ctx.textAlign = 'left';
+                ctx.font='small-caps 500 38px roboto-medium';
+                ctx.fillText($('#name').val(),336,344);
+				
+				
+					//refill text
+                ctx.fillStyle = "#f60303";
+                ctx.textAlign = 'left';
+                ctx.font='500 36px roboto-medium';
+                ctx.fillText($('#mob-1').val(),384,382);
+				
+				
+				//refill text
+                ctx.fillStyle = "#f60303";
+                ctx.textAlign = 'left';
+                ctx.font='500 36px roboto-medium';
+                ctx.fillText($('#mob-2').val(),640,382);
+				
+				
+					//refill text
+                ctx.fillStyle = "#0314b6";
+                ctx.textAlign = 'center';
+                ctx.font='500 30px roboto-medium';
+                ctx.fillText($('#add-1').val(),670,498);
+				//refill text
+                ctx.fillStyle = "#0314b6";
+                ctx.textAlign = 'center';
+                ctx.font='500 30px roboto-medium';
+                ctx.fillText($('#add-2').val(),670,528);
+				
+				//refill text
+                ctx.fillStyle = "#0314b6";
+                ctx.textAlign = 'center';
+                ctx.font='500 30px roboto-medium';
+                ctx.fillText($('#add-3').val(),670,560);
+				
+				//refill text
+				ctx.fillStyle = "#0314b6";
+                ctx.textAlign = 'center';
+                ctx.font='400 30px roboto-medium';
+                ctx.fillText($('#std').val(),174,288);
+				
+                // ctx.font = '30pt verdana'
+                // ctx.fillText(today,260,815);  
+            });
+            $(document).on('click','#preview',function(){
+                $('#canvas').css('display','inline-block');
+                $('#dpdf').css('display','inline-block');
+                $('#djpg').css('display','inline-block');
+            })
+            function downloadjpg(){ 
+                var canvas = document.getElementById('canvas');
+                canvas.crossOrigin = "Anonymous";
+                var image = canvas.toDataURL();  
+                var tmpLink = document.createElement( 'a' );     
+                tmpLink.download = 'Sunrise-id.jpg';
+                tmpLink.href = image;
+                document.body.appendChild( tmpLink );     
+                tmpLink.click();     
+                document.body.removeChild( tmpLink );
+            }
+        </script>
+			<script src="
+https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js
+"></script>
+			
+    </body>
+</html>
